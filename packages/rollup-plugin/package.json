@@ -1,15 +1,23 @@
 {
   "name": "@callback-reassign/rollup-plugin",
   "version": "0.0.0",
-  "description": "",
+  "description": "Callback reassign rollup plugin",
   "main": "dist/index.js",
   "scripts": {
     "test": "vitest run",
     "build": "rimraf dist && tsc"
   },
-  "keywords": [],
+  "keywords": [
+    "rollup",
+    "plugin",
+    "callback",
+    "reassign"
+  ],
   "author": "anuoua",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@types/node": "^18.15.11",
     "rimraf": "^4.4.1",
