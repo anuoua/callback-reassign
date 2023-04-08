@@ -59,6 +59,9 @@ export default function (babel: typeof babelCore, config: Config): PluginObj {
             }
           });
         });
+
+        // no hits just skip
+        if (Object.keys(finallyFns).length === 0) path.skip();
       },
 
       // record fns override
