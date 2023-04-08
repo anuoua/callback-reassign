@@ -1,0 +1,9 @@
+{
+  "name": "callback-reassign",
+  "version": "0.0.0",
+  "description": "Callback reassign transform plugins",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

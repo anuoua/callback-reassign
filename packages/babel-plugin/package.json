@@ -1,0 +1,24 @@
+{
+  "name": "@callback-reassign/babel-plugin",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "vitest run",
+    "build": "rimraf dist && tsc"
+  },
+  "keywords": [],
+  "author": "anuoua",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/babel__core": "^7.20.0",
+    "@types/node": "^18.15.11",
+    "rimraf": "^4.4.1",
+    "typescript": "^5.0.3",
+    "vite": "^4.2.1",
+    "vitest": "^0.29.8"
+  },
+  "dependencies": {
+    "@babel/core": "^7.21.4"
+  }
+}

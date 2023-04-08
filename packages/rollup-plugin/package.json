@@ -1,0 +1,25 @@
+{
+  "name": "@callback-reassign/rollup-plugin",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "vitest run",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "anuoua",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/estree": "^1.0.0",
+    "typescript": "^5.0.3",
+    "vite": "^4.2.1",
+    "vitest": "^0.29.8"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "^5.0.2",
+    "estree-walker": "^3.0.3",
+    "magic-string": "^0.30.0",
+    "rollup": "^3.20.2"
+  }
+}

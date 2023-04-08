@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "declaration": true,
+    "lib": ["ESNext"],
+    "strict": true,
+    "removeComments": true
+  }
+}
