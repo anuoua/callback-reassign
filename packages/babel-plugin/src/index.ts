@@ -124,43 +124,45 @@ export default function (babel: typeof babelCore, config: Config): PluginObj {
           if (t.isObjectPattern(id) || t.isArrayPattern(id)) {
             const cloneIdAst = t.cloneDeepWithoutLoc(id);
 
-            traverse(
-              cloneIdAst,
-              {
-                Identifier(path) {
-                  if (
-                    t.isObjectProperty(path.parent) &&
-                    path.parent.value === path.node
-                  ) {
-                    const newCount = count++;
-                    alias.push([path.parent.value.name, newCount]);
-                    path.replaceWith(t.identifier(REASSIGN_FLAG + newCount));
-                    path.skip();
-                  }
-                  if (
-                    t.isArrayPattern(path.parent) ||
-                    t.isRestElement(path.parent)
-                  ) {
-                    const newCount = count++;
-                    alias.push([path.node.name, newCount]);
-                    path.replaceWith(t.identifier(REASSIGN_FLAG + newCount));
-                    path.skip();
-                  }
-                  if (
-                    t.isAssignmentPattern(path.parent) &&
-                    path.parent.left === path.node
-                  ) {
-                    const newCount = count++;
-                    alias.push([path.node.name, newCount]);
-                    path.replaceWith(t.identifier(REASSIGN_FLAG + newCount));
-                    path.skip();
-                  }
-                },
+            // traverse cloneIdAst must provide scope and path
+            // build a program ast without scope and path
+            const programast = t.program([
+              t.variableDeclaration("let", [
+                t.variableDeclarator(cloneIdAst, t.stringLiteral("")),
+              ]),
+            ]);
+
+            traverse(programast, {
+              Identifier(path) {
+                if (
+                  t.isObjectProperty(path.parent) &&
+                  path.parent.value === path.node
+                ) {
+                  const newCount = count++;
+                  alias.push([path.parent.value.name, newCount]);
+                  path.replaceWith(t.identifier(REASSIGN_FLAG + newCount));
+                  path.skip();
+                }
+                if (
+                  t.isRestElement(path.parent) ||
+                  t.isArrayPattern(path.parent)
+                ) {
+                  const newCount = count++;
+                  alias.push([path.node.name, newCount]);
+                  path.replaceWith(t.identifier(REASSIGN_FLAG + newCount));
+                  path.skip();
+                }
+                if (
+                  t.isAssignmentPattern(path.parent) &&
+                  path.parent.left === path.node
+                ) {
+                  const newCount = count++;
+                  alias.push([path.node.name, newCount]);
+                  path.replaceWith(t.identifier(REASSIGN_FLAG + newCount));
+                  path.skip();
+                }
               },
-              path.scope,
-              undefined,
-              path
-            );
+            });
             const callbackTemplate = template.expression(
               `(%%VAR%%) => {%%ASSIGNS%%}`
             );
