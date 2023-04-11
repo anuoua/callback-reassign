@@ -1,6 +1,6 @@
 {
   "name": "@callback-reassign/babel-plugin",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1",
   "description": "Callback reassign babel plugin",
   "main": "dist/index.js",
   "scripts": {
