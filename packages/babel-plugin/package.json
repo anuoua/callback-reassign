@@ -14,6 +14,7 @@
     "reassign"
   ],
   "author": "anuoua",
+  "homepage": "https://github.com/anuoua/callback-reassign",
   "license": "MIT",
   "files": [
     "dist"
